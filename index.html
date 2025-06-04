@@ -3,114 +3,296 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>First $1k Dropshipping Guide</title>
+  <title>First $1K Dropshipping Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    /* Gradient yellow background */
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #fceabb, #f8b500);
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background-color: #f7f9fc;
+      color: #1e293b;
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #2563eb;
+    }
+
     header {
-      background: linear-gradient(90deg, #f8b500, #fdd835);
-      padding: 1.5rem 2rem;
+      background-color: #2563eb;
+      padding: 1.75rem 2rem;
       text-align: center;
-      font-weight: bold;
-      font-size: 1.8rem;
-      color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: white;
+      font-weight: 600;
+      font-size: 1.75rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+      user-select: none;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
+
     main {
-      flex-grow: 1;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      flex: 1;
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      overflow-x: hidden;
     }
+
     h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
       text-align: center;
       margin-bottom: 0.5rem;
-      color: #5a3e00;
+      color: #0f172a;
     }
+
     p.subtitle {
+      font-weight: 400;
+      font-size: 1.125rem;
       text-align: center;
-      color: #7a5800;
-      margin-bottom: 2rem;
-      font-style: italic;
+      color: #64748b;
+      margin-bottom: 3rem;
     }
+
+    /* Section styling */
     section {
-      background: rgba(255 255 255 / 0.9);
-      border-radius: 10px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 8px rgba(248, 181, 0, 0.2);
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     section h2 {
-      color: #a67c00;
+      font-weight: 600;
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+      color: #1e293b;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Product grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(59, 130, 246, 0.1);
+      background: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.25);
+    }
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      user-select: none;
+    }
+    .product-content {
+      padding: 1rem 1.25rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    .product-desc {
+      font-size: 0.95rem;
+      color: #475569;
       margin-bottom: 1rem;
-      border-bottom: 2px solid #f8b500;
-      padding-bottom: 0.3rem;
+      flex-grow: 1;
     }
-    ul {
-      list-style: disc inside;
-      line-height: 1.6;
+
+    /* Ad Tips */
+    .ad-tips p {
+      margin: 0.6rem 0;
+      font-weight: 500;
+      color: #334155;
     }
+    .ad-tips p.label {
+      font-weight: 700;
+      margin-top: 1rem;
+      color: #2563eb;
+    }
+
+    /* Pro Tips */
+    ul.pro-tips {
+      list-style-type: disc;
+      padding-left: 1.3rem;
+      color: #334155;
+      font-weight: 400;
+      font-size: 1rem;
+    }
+    ul.pro-tips li {
+      margin-bottom: 0.75rem;
+    }
+
+    /* Button */
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      align-self: center;
+      margin-top: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .btn-primary:hover {
+      background-color: #1e40af;
+    }
+
+    /* Footer */
     footer {
+      background-color: #f1f5f9;
+      padding: 1.75rem 1rem;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #5a3e00;
-      background: linear-gradient(90deg, #f8b500, #fdd835);
+      font-size: 0.875rem;
+      color: #64748b;
+      user-select: none;
+      border-top: 1px solid #e2e8f0;
       margin-top: auto;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
     }
+
     /* Responsive */
     @media (max-width: 600px) {
       main {
-        margin: 1rem;
+        margin: 2rem 1rem;
+        padding: 0;
+      }
+      section {
+        padding: 1.5rem 1.5rem;
+      }
+      .product-image {
+        height: 150px;
       }
     }
   </style>
 </head>
 <body>
-  <header>Make Your First $1K Dropshipping</header>
-  <main>
-    <h1>Welcome, Future Dropshipper!</h1>
-    <p class="subtitle">Discover winning products, ads, and strategies to reach your first $1,000 fast.</p>
 
-    <section>
-      <h2>🔥 Winning Products This Month</h2>
-      <ul>
-        <li>Wireless Charging Station - Trending on TikTok</li>
-        <li>LED Strip Lights - Popular for room decor</li>
-        <li>Reusable Silicone Food Bags - Eco-friendly & high demand</li>
-      </ul>
-    </section>
+<header>Make Your First $1K Dropshipping</header>
 
-    <section>
-      <h2>🚀 Ad Examples & Tips</h2>
-      <p>Here’s a quick winning ad idea:</p>
-      <ul>
-        <li><strong>Hook:</strong> "Tired of messy cords? Check this out!"</li>
-        <li><strong>Video Content:</strong> Show the product in action, quick setup.</li>
-        <li><strong>Call to Action:</strong> "Get yours today before it sells out!"</li>
-      </ul>
-      <p>Use bright visuals and energetic music. Test different audiences & optimize daily.</p>
-    </section>
+<main>
+  <h1>Welcome, Future Dropshipper</h1>
+  <p class="subtitle">Discover winning products, ads, and strategies to reach your first $1,000 fast.</p>
 
-    <section>
-      <h2>💡 Pro Tips</h2>
-      <ul>
-        <li>Focus on 1-2 products, don’t spread yourself thin.</li>
-        <li>Use Facebook & Instagram ads to target niche audiences.</li>
-        <li>Test your ad creatives with small budgets first.</li>
-        <li>Keep your store simple, mobile-friendly, and fast.</li>
-      </ul>
-    </section>
-  </main>
-  <footer>© 2025 Dropship Success Guide</footer>
+  <section id="products-section" class="animate">
+    <h2>Winning Products This Month</h2>
+    <div class="products">
+      <div class="product-card" tabindex="0">
+        <img class="product-image" src="https://images.unsplash.com/photo-1512446733611-9099a758e493?auto=format&fit=crop&w=400&q=80" alt="Wireless Charging Station" />
+        <div class="product-content">
+          <h3 class="product-title">Wireless Charging Station</h3>
+          <p class="product-desc">Compact and fast charging, popular for tech enthusiasts.</p>
+        </div>
+      </div>
+      <div class="product-card" tabindex="0">
+        <img class="product-image" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="LED Strip Lights" />
+        <div class="product-content">
+          <h3 class="product-title">LED Strip Lights</h3>
+          <p class="product-desc">Perfect for room decoration with customizable colors.</p>
+        </div>
+      </div>
+      <div class="product-card" tabindex="0">
+        <img class="product-image" src="https://images.unsplash.com/photo-1567016542879-c82877f6f97e?auto=format&fit=crop&w=400&q=80" alt="Reusable Silicone Food Bags" />
+        <div class="product-content">
+          <h3 class="product-title">Reusable Silicone Food Bags</h3>
+          <p class="product-desc">Eco-friendly storage solution, highly durable and versatile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ads-section" class="animate">
+    <h2>Ad Examples & Tips</h2>
+    <div class="ad-tips">
+      <p class="label">Hook:</p>
+      <p>"Tired of messy cords? Check this out!"</p>
+
+      <p class="label">Video Content:</p>
+      <p>Show the product in action with quick and easy setup.</p>
+
+      <p class="label">Call to Action:</p>
+      <p>"Get yours today before it sells out!"</p>
+
+      <p>Use bright visuals and energetic music. Test different audiences and optimize daily.</p>
+    </div>
+    <button class="btn-primary" aria-label="Get started with your dropshipping journey">Get Started</button>
+  </section>
+
+  <section id="tips-section" class="animate">
+    <h2>Pro Tips</h2>
+    <ul class="pro-tips">
+      <li>Focus on 1-2 products, don’t spread yourself thin.</li>
+      <li>Use Facebook & Instagram ads to target niche audiences.</li>
+      <li>Test your ad creatives with small budgets first.</li>
+      <li>Keep your store simple, mobile-friendly, and fast.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>© 2025 Dropship Success Guide</footer>
+
+<script>
+  // Scroll animation for sections
+  const sections = document.querySelectorAll('section.animate');
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < windowHeight - 100){
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
 </body>
 </html>
